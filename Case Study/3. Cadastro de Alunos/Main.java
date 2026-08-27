@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -49,9 +50,20 @@ public class Main {
             name = scanner.nextLine();
         }
 
-        System.out.print("Idade: ");
-        int age = scanner.nextInt();
-        scanner.nextLine();
+        int age;
+
+        while (true) {
+            try {
+                System.out.print("Idade: ");
+                age = scanner.nextInt();
+                scanner.nextLine();
+                break;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Idade inválida!");
+                scanner.nextLine();
+            }
+        }
 
         while (age <= 0) {
             System.out.println("\nIdade invalida, tente novamente.\n");
